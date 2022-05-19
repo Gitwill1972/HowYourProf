@@ -24,4 +24,4 @@ if ($stmt->execute()) {
 echo '<br>';
 $pdo = null;
 ?>
-<input type="button" name="return" value="Return to Homepage" onclick="window.location.href='queryGetAll.php'">
+<input type="button" name="return" value="Return to Homepage" onclick="window.location.href='queryGetAllProf.php'">

@@ -1,24 +1,20 @@
 <!DOCTYPE>
 <html>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-td{
-    text-align: center;
-}
-</style>
   <head>
-
+    <title>Admin's Page</title>
+  <link rel="stylesheet" href="index.css">
   </head>
     <body>
       <h1> How's your Prof </h1>
       <form action="queryGetAdmin.php" method="GET">
+      <div class="search_fields">
       Search By: <br>
         <input type="radio" name="search_by" value="prof_name"> Professor
         <input type="radio" name="search_by" value="course_id"> Course <br>
         <input type="text" name="form_name"> <br>
-        <input type="button" name="reset" value="Reset Filter" onclick="window.location.href='queryGetAllAdmin.php'">
+        </div>
+        <input type="button" class = "menu_button" name="reset" value="Reset Filter" onclick="window.location.href='queryGetAllAdmin.php'">
+      
 
       </form>
       <table>
@@ -27,7 +23,7 @@ td{
           <th>Professor</th>
           <th>Course ID</th>
           <th style="width:30%">Rating</th>
-          <th>Difficulty</th>
+          <th>Grade Difficulty</th>
           <th>Take again</th>
           <th>Credit</th>
           <th>Textbook</th>
@@ -58,12 +54,16 @@ td{
                 '<td>' . $rating['attendance'] . '</td>', 
                 '<td>' . $rating['grade'] . '</td>',
                 '<td>' . $rating['prof_Respond'] . '</td>';
-            echo '<td>
+                echo '<td>
             <form action="queryDelete.php" method="POST" >
               <input type="hidden" name="form_id" value="' . $rating['rating_id'] . '">
-              <input type="submit" name="submit" value="Delete">
+              <input type="submit" class="menu_button" name="submit" value="Delete">
             </form>
-            </td>';
+            <form  class = "hidden" action="updateForm.php" method="GET" >
+              <input type="hidden" name="form_id" value="' . $rating['rating_id'] . '">
+              <input type="submit" class="menu_button" name="submit" value="Respond from Professor">
+            </form>
+            </td></div>';
             echo '</tr>';
           }
         }
@@ -71,8 +71,9 @@ td{
         ?>
 
       </table>
-      <form action="" method="GET" >
-        <input type="button" name="home" value="Home" onclick="window.location.href='index.php'">
+      <form class="menu" action="insertForm.php" method="GET" >
+        <input type="submit" class = "menu_button" name="submit" value="Create new Rating">
+        <input type="button" class = "menu_button" name="home" value="Home" onclick="window.location.href='index.php'">
       </form>
 
     </body>

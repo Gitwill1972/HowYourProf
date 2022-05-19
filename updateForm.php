@@ -2,7 +2,8 @@
 <!DOCTYPE>
 <html>
   <head>
-
+  <title>Professor's Respond</title>
+  <link rel="stylesheet" href="index.css">
   </head>
     <body>
       <form action="queryUpdate.php" method="POST">
@@ -20,16 +21,16 @@
         $rating = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($rating) {
-          echo 'What are your thoughts as the lecturer?: <br> <textarea rows = "5" cols = "50" name="form_prof_Respond"> Please enter your respond</textarea><br/>';
+          echo '<div class = "form_fields"> What are your thoughts as the lecturer?: <br> <textarea rows = "5" cols = "50" name="form_prof_Respond"></textarea><br/></div>';
           echo '<input type="hidden" name="form_id" value="' . $rating['rating_id'] . '"> <br/>';
         } else {
-        	echo "The rating with id $rating_id was not found.";
+        	echo "<script>alert('The rating with id $rating_id was not found.');</script>";
         }
 
         $pdo = null;
         ?>
 
-          <input type="submit" name="submit" value="Confirm Respond">
+          <input type="submit" class = "menu_button" name="submit" value="Confirm Respond">
       </form>
 
     </body>
